@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>就活16タイプ診断 | 就活の地図</title>
+  <meta name="description" content="20問・約3分で、あなたに合う就活の方向性が分かる診断。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="quiz">
+    <header class="quiz-header">
+      <div class="container">
+        <div class="quiz-bar">
+          <a class="quiz-close" href="index.html" aria-label="診断をやめてトップに戻る">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </a>
+          <span class="quiz-title">就活16タイプ診断</span>
+          <span class="quiz-count" id="quiz-count">1/20</span>
+        </div>
+        <div class="progress" id="progress" role="progressbar" aria-label="回答した数" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="quiz-main">
+      <div class="container">
+        <p class="quiz-no" id="quiz-no">Q1</p>
+        <h1 class="quiz-question" id="quiz-question" tabindex="-1" aria-live="polite">読み込み中…</h1>
+        <div class="answers" id="answers" role="group" aria-labelledby="quiz-question"></div>
+      </div>
+    </main>
+
+    <footer class="quiz-footer">
+      <div class="container">
+        <button class="text-button" id="back-button" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          前の質問
+        </button>
+        <span class="note">直感で答えてOK</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/questions.js"></script>
+  <script src="js/shindan.js"></script>
+</body>
+</html>

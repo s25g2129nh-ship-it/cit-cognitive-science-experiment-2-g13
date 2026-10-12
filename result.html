@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>診断結果 | 就活16タイプ診断</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">就活の地図</a>
+      <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="shindan.html">16タイプ診断</a></li>
+          <li><a href="roadmap.html">ロードマップ</a></li>
+          <li><a href="guide.html">理系の就活ガイド</a></li>
+          <li><a href="glossary.html">用語集</a></li>
+          <li><a href="about.html">このサイトについて</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="result-card">
+        <p class="result-label">あなたのタイプは</p>
+        <p class="result-code" id="result-code"></p>
+        <h1 class="result-name" id="result-name"></h1>
+        <p class="result-catch" id="result-catch"></p>
+        <p class="result-tag">#就活16タイプ診断</p>
+      </div>
+
+      <div class="share">
+        <a class="button button--dark" id="share-x" href="#" target="_blank" rel="noopener">Xでシェア</a>
+        <a class="button button--dark" id="share-line" href="#" target="_blank" rel="noopener">LINEで送る</a>
+      </div>
+
+      <p class="result-desc" id="result-desc"></p>
+    </div>
+
+    <section class="section" id="axes-section">
+      <div class="container">
+        <h2 class="section-title">あなたの傾向</h2>
+        <div class="axes" id="axes"></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <h2 class="section-title">向いている職種の例</h2>
+        <ul class="chips" id="jobs" style="margin-top: 0"></ul>
+      </div>
+    </section>
+
+    <section class="section section--sub">
+      <div class="container">
+        <h2 class="section-title">あなたの次の一歩</h2>
+        <ol class="next-steps" id="next-steps"></ol>
+        <a class="button" href="roadmap.html">ロードマップで続きを見る</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">相性のいいタイプ</h2>
+        <a class="pair-card" id="pair" href="#">
+          <span class="type-code" id="pair-code"></span>
+          <span>
+            <span class="type-name" id="pair-name" style="display: block"></span>
+            <span class="type-catch" id="pair-catch"></span>
+          </span>
+        </a>
+        <p class="center" style="margin-top: 32px">
+          <a href="shindan.html">もう一度診断する</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="about.html">このサイトについて</a><br>
+      千葉工業大学 認知情報科学実験2 グループ13
+    </div>
+  </footer>
+  <script src="js/common.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/types.js"></script>
+  <script src="js/result.js"></script>
+</body>
+</html>
