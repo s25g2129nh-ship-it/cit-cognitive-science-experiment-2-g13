@@ -22,10 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 向いている職種
   const jobs = document.getElementById("jobs");
+  // js/jobs.js の JOB_LINKS にある職種は、職種ページへのリンクにする
+  const links = typeof JOB_LINKS !== "undefined" ? JOB_LINKS : {};
   type.jobs.forEach((job) => {
     const li = document.createElement("li");
     li.className = "chip chip--outline";
-    li.textContent = job;
+    if (links[job]) {
+      li.classList.add("chip--link");
+      const a = document.createElement("a");
+      a.href = `jobs/${links[job]}.html`;
+      a.textContent = job;
+      li.appendChild(a);
+    } else {
+      li.textContent = job;
+    }
     jobs.appendChild(li);
   });
 

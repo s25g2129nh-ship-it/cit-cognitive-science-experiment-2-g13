@@ -60,4 +60,10 @@ for (const code of Object.keys(TYPES)) {
   assert.ok(JOBS.some((j) => j.types.includes(code)), `${code} に近い職種が職種ガイドに1つもない`);
 }
 
+// 7. 「向いている職種の例」のリンク先がある
+const { JOB_LINKS } = require("../js/jobs.js");
+for (const [name, id] of Object.entries(JOB_LINKS)) {
+  assert.ok(jobIds.has(id), `JOB_LINKS の「${name}」のリンク先「${id}」が職種ガイドにない`);
+}
+
 console.log("全部 OK");

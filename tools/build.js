@@ -19,7 +19,7 @@
 const fs = require("fs");
 const path = require("path");
 const { TYPES, pairOf } = require("../js/types.js");
-const { JOB_CATEGORIES, JOBS } = require("../js/jobs.js");
+const { JOB_CATEGORIES, JOBS, JOB_LINKS } = require("../js/jobs.js");
 
 // GitHub Pages で公開したときの URL(最後の / を忘れずに)
 const SITE_URL = "https://s25g2129nh-ship-it.github.io/cit-cognitive-science-experiment-2-g13/";
@@ -58,6 +58,10 @@ const esc = (s) =>
 const codesOf = (prefix) => Object.keys(TYPES).filter((c) => c.startsWith(prefix));
 const jobsOfType = (code) => JOBS.filter((j) => j.types.includes(code));
 
+// 「向いている職種の例」の1つを、職種ページがあればリンクにする(prefix: "../" など)
+const jobLink = (name, prefix) =>
+  JOB_LINKS[name] ? `<a href="${prefix}jobs/${JOB_LINKS[name]}.html">${esc(name)}</a>` : esc(name);
+
 // 職種の写真:images/jobs/<id>.jpg / .png / .webp があれば使う
 function jobPhoto(j) {
   for (const ext of ["jpg", "jpeg", "png", "webp"]) {
@@ -69,7 +73,7 @@ function jobPhoto(j) {
 // prefix: リンクの前につける "../" など、size: "card" か "hero"
 function photoHtml(j, prefix, size) {
   const src = jobPhoto(j);
-  const credit = j.photoCredit ? `<figcaption class="job-photo-credit">写真:${esc(j.photoCredit)}</figcaption>` : "";
+  const credit = j.photoCredit ? `<figcaption class="job-photo-credit">出典:${esc(j.photoCredit)}</figcaption>` : "";
   if (src) {
     return `<figure class="job-photo job-photo--${size}"><img src="${prefix}${src}" alt="${esc(j.name)}の仕事のようす" loading="lazy" width="800" height="600">${credit}</figure>`;
   }
@@ -171,7 +175,7 @@ for (const [code, t] of Object.entries(TYPES)) {
       <div class="container">
         <h2 class="section-title">向いている職種の例</h2>
         <ul class="chips" style="margin-top: 0">
-${t.jobs.map((j) => `          <li class="chip chip--outline">${esc(j)}</li>`).join("\n")}
+${t.jobs.map((j) => `          <li class="chip chip--outline${JOB_LINKS[j] ? " chip--link" : ""}">${jobLink(j, "../")}</li>`).join("\n")}
         </ul>
 ${related.length ? `        <p class="note" style="margin: 16px 0 8px">職種ガイドで仕事内容を見る</p>
         <ul class="link-list">
@@ -246,7 +250,7 @@ ${cards}
 // ---------- 4. guide.html の表 ----------
 const guideRows = GROUPS.flatMap((g) => codesOf(g.prefix)).map((code) => {
   const t = TYPES[code];
-  return `          <tr><td><a href="types/${code}.html">${code}</a></td><td>${esc(t.name)}</td><td>${esc(t.jobs.join("、"))}</td></tr>`;
+  return `          <tr><td><a href="types/${code}.html">${code}</a></td><td>${esc(t.name)}</td><td>${t.jobs.map((j) => jobLink(j, "")).join("、")}</td></tr>`;
 }).join("\n");
 replaceBetween("guide.html", "GUIDE-TYPES", `    <div class="table-wrap">
       <table class="table--fit">

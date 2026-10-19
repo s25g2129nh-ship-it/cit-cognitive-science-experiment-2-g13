@@ -246,6 +246,16 @@ a.type-card:hover { border-color: var(--accent); color: var(--text); }
   font-size: 13px;
 }
 .chip--outline { background: transparent; border: 1px solid var(--line); }
+/* 職種ページに飛べるチップ */
+.chip--link { padding: 0; }
+.chip--link a {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 6px 12px;
+  color: var(--text); text-decoration: none;
+}
+.chip--link a::after { content: "›"; color: var(--accent); font-weight: 700; }
+.chip--link:hover { border-color: var(--accent); }
+.chip--link a:hover { color: var(--accent); }
 
 .steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
 .steps li { display: flex; gap: 14px; }
@@ -566,9 +576,12 @@ table.axis-table, table.table--fit { min-width: 0; }
 .job-photo { margin: 0; }
 .job-photo img {
   display: block; width: 100%; height: auto;
-  aspect-ratio: 4 / 3; object-fit: cover;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;            /* イラストが切れないように全体を表示 */
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--bg-sub);
+  background: #fff;
+  padding: 8px;
 }
 .job-photo--empty {
   display: flex; align-items: center; justify-content: center;
@@ -582,7 +595,8 @@ table.axis-table, table.table--fit { min-width: 0; }
 }
 .job-photo--empty code { font-size: 11px; word-break: break-all; }
 .job-photo--hero { margin: 8px 0 8px; }
-.job-photo--hero img, .job-photo--hero.job-photo--empty { aspect-ratio: 16 / 9; }
+.job-photo--hero img, .job-photo--hero.job-photo--empty { aspect-ratio: 16 / 9; max-height: 320px; }
+.job-photo--hero img { padding: 16px; }
 @media (max-width: 560px) {
   .job-card-photo .job-photo img, .job-card-photo .job-photo--empty { aspect-ratio: 16 / 9; }
 }
