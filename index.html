@@ -22,7 +22,14 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="メインメニュー">
         <ul>
-          <li><a href="shindan.html">16タイプ診断</a></li>
+          <li class="has-sub">
+            <a href="shindan-intro.html">16タイプ診断</a>
+            <ul class="sub-nav">
+              <li><a href="shindan.html">診断をはじめる</a></li>
+              <li><a href="types.html">16タイプ一覧</a></li>
+            </ul>
+          </li>
+          <li><a href="jobs.html">職種ガイド</a></li>
           <li><a href="roadmap.html">ロードマップ</a></li>
           <li><a href="guide.html">理系の就活ガイド</a></li>
           <li><a href="glossary.html">用語集</a></li>
@@ -38,7 +45,7 @@
         <p class="hero-eyebrow">理系の就活、何から始める?</p>
         <h1>3分で、<br>就活の地図を<br>手に入れる。</h1>
         <p class="lead">20の質問に答えるだけで、あなたに合う方向性と、今やるべき「次の一歩」が分かります。</p>
-        <a class="button" href="shindan.html">
+        <a class="button" href="shindan-intro.html">
           就活16タイプ診断をはじめる
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -78,6 +85,7 @@
           <li class="chip">深く / 広く</li>
           <li class="chip">計画 / 行動</li>
         </ul>
+        <a class="button button--outline more-link" href="types.html">16タイプをすべて見る</a>
       </div>
     </section>
 
@@ -89,7 +97,7 @@
             <span class="step-num">1</span>
             <div>
               <div class="step-title">診断で方向性を知る</div>
-              <div class="step-text">20問に答えて、自分のタイプと向いている職種を知る</div>
+              <div class="step-text">20問に答えて、自分のタイプと向いている職種を知る(<a href="shindan-intro.html">診断について</a>)</div>
             </div>
           </li>
           <li>
@@ -119,6 +127,15 @@
               <div>
                 <div class="link-card-title">就活ロードマップ</div>
                 <div class="link-card-text">時期別にやることを一覧で</div>
+              </div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="link-card" href="jobs.html">
+              <div>
+                <div class="link-card-title">職種ガイド</div>
+                <div class="link-card-text">どんな仕事か・近いタイプ・企業の例</div>
               </div>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
             </a>

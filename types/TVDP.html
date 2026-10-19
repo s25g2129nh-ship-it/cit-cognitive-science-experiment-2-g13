@@ -20,11 +20,31 @@
   <header class="site-header">
     <div class="container">
       <a class="logo" href="../index.html">就活の地図</a>
+      <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="メインメニュー">
+        <ul>
+          <li class="has-sub is-active">
+            <a href="../shindan-intro.html">16タイプ診断</a>
+            <ul class="sub-nav">
+              <li><a href="../shindan.html">診断をはじめる</a></li>
+              <li><a href="../types.html">16タイプ一覧</a></li>
+            </ul>
+          </li>
+          <li><a href="../jobs.html">職種ガイド</a></li>
+          <li><a href="../roadmap.html">ロードマップ</a></li>
+          <li><a href="../guide.html">理系の就活ガイド</a></li>
+          <li><a href="../glossary.html">用語集</a></li>
+          <li><a href="../about.html">このサイトについて</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
   <main>
     <div class="container">
+      <nav class="breadcrumb" aria-label="現在の位置"><a href="../shindan-intro.html">16タイプ診断</a> › <a href="../types.html">16タイプ一覧</a> › <span aria-current="page">TVDP</span></nav>
       <div class="result-card">
         <p class="result-label">就活16タイプ</p>
         <p class="result-code">TVDP</p>
@@ -42,14 +62,24 @@
           <li class="chip chip--outline">ベンチャーの研究職</li>
           <li class="chip chip--outline">AIエンジニア</li>
         </ul>
+        <p class="note" style="margin: 16px 0 8px">職種ガイドで仕事内容を見る</p>
+        <ul class="link-list">
+          <li><a class="link-card" href="../jobs.html#research"><div><div class="link-card-title">研究開発</div><div class="link-card-text">新しい技術や製品のもとになる研究をする仕事。数年先の製品を見すえて、実験と検証をくり返します。</div></div></a></li>
+          <li><a class="link-card" href="../jobs.html#data"><div><div class="link-card-title">データサイエンティスト・AIエンジニア</div><div class="link-card-text">大量のデータを分析したり、AIのモデルを作ったりして、会社の課題を解決する仕事です。</div></div></a></li>
+        </ul>
       </div>
     </section>
 
     <section class="section section--sub">
       <div class="container">
-        <h2 class="section-title">あなたは何タイプ?</h2>
-        <p class="lead">20の質問に答えるだけで、あなたに合う方向性と「次の一歩」が分かります。</p>
-        <a class="button" href="../shindan.html">診断してみる(約3分)</a>
+        <h2 class="section-title">このタイプの次の一歩</h2>
+        <ol class="next-steps">
+          <li>自分の研究テーマに近い技術を使っている企業を探す</li>
+          <li>長期インターン(有給)の募集をのぞいてみる</li>
+          <li>成果物(コードや研究)をまとめる場所を作る</li>
+        </ol>
+        <p class="lead">自分のタイプが分からない人は、診断してみましょう。</p>
+        <a class="button" href="../shindan-intro.html">就活16タイプ診断へ(約3分)</a>
       </div>
     </section>
 
@@ -63,6 +93,7 @@
             <span class="type-catch">人と部署をつないで計画通りに進める</span>
           </span>
         </a>
+        <p class="center" style="margin-top: 32px"><a href="../types.html">16タイプ一覧に戻る</a></p>
       </div>
     </section>
   </main>
@@ -73,5 +104,6 @@
       千葉工業大学 認知情報科学実験2 グループ13
     </div>
   </footer>
+  <script src="../js/common.js"></script>
 </body>
 </html>

@@ -61,6 +61,7 @@ h1, h2, h3 { line-height: 1.4; margin: 0; }
   z-index: 10;
 }
 .site-header .container {
+  max-width: 960px;
   height: 56px;
   display: flex;
   align-items: center;
@@ -91,10 +92,41 @@ h1, h2, h3 { line-height: 1.4; margin: 0; }
   gap: 20px;
   font-size: 14px;
 }
+.site-nav > ul > li > a { display: block; line-height: 56px; }
 .site-nav a { color: var(--text); text-decoration: none; }
-.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--accent); }
+.site-nav a:hover, .site-nav a[aria-current="page"], .site-nav .is-active > a { color: var(--accent); }
 
-@media (max-width: 720px) {
+/* 「16タイプ診断」の下の小さなメニュー(PCではマウスを乗せると出る) */
+.site-nav .has-sub { position: relative; }
+.site-nav .has-sub > a::after {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  margin-left: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-3px) rotate(45deg);
+}
+.site-nav .sub-nav {
+  display: none;
+  position: absolute;
+  top: 100%; left: -16px;
+  min-width: 180px;
+  padding: 8px 0;
+  flex-direction: column;
+  gap: 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 16px rgba(31, 29, 28, 0.08);
+  z-index: 20;
+}
+.site-nav .has-sub:hover .sub-nav,
+.site-nav .has-sub:focus-within .sub-nav { display: flex; }
+.site-nav .sub-nav a { display: block; padding: 10px 16px; white-space: nowrap; }
+.site-nav .sub-nav a:hover { background: var(--bg-sub); }
+
+@media (max-width: 860px) {
   .menu-button { display: flex; }
   .site-nav {
     display: none;
@@ -102,11 +134,36 @@ h1, h2, h3 { line-height: 1.4; margin: 0; }
     top: 56px; left: 0; right: 0;
     background: var(--bg);
     border-bottom: 1px solid var(--line);
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
   }
   .site-nav.is-open { display: block; }
-  .site-nav ul { flex-direction: column; gap: 0; padding: 8px 20px 16px; }
+  .site-nav > ul { flex-direction: column; gap: 0; padding: 8px 20px 16px; }
+  .site-nav > ul > li > a { line-height: 1.8; }
   .site-nav a { display: block; padding: 12px 0; font-size: 15px; }
+  /* スマホでは小さなメニューを常に開いて、字下げして表示 */
+  .site-nav .has-sub > a::after { display: none; }
+  .site-nav .sub-nav,
+  .site-nav .has-sub:hover .sub-nav {
+    display: flex;
+    position: static;
+    min-width: 0;
+    padding: 0 0 4px 16px;
+    border: none;
+    border-left: 2px solid var(--line);
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .site-nav .sub-nav a { padding: 8px 0; font-size: 14px; color: var(--text-body); }
+  .site-nav .sub-nav a:hover { background: none; }
+  .site-nav .sub-nav a[aria-current="page"] { color: var(--accent); }
 }
+
+/* ---------- パンくず ---------- */
+.breadcrumb { padding-top: 16px; font-size: 12px; color: var(--text-sub); }
+.breadcrumb a { color: var(--text-sub); }
+.page-head:first-child, .breadcrumb + .page-head { padding-top: 16px; }
+main > .page-head:first-child { padding-top: 40px; }
 
 /* ---------- ボタン ---------- */
 .button {
@@ -397,6 +454,91 @@ tr:last-child td { border-bottom: none; }
 
 .glossary dt { font-weight: 700; margin-top: 20px; }
 .glossary dd { margin: 4px 0 0; color: var(--text-body); font-size: 15px; }
+
+/* ---------- 16タイプ一覧 ---------- */
+table.axis-table, table.table--fit { min-width: 0; }
+.axis-table td:nth-child(2) { white-space: nowrap; }
+.axis-table td:first-child { white-space: nowrap; font-weight: 700; color: var(--accent); }
+.type-group { margin-top: 40px; }
+.type-group-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+.type-group-head h2 { font-size: 19px; font-weight: 700; margin: 0; padding: 0; border: none; }
+.type-group-code { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; }
+.type-group p { margin: 0 0 14px; }
+.type-card .type-jobs { font-size: 12px; color: var(--text-body); margin-top: 6px; line-height: 1.6; }
+.more-link { margin-top: 16px; }
+.cta-box {
+  margin: 40px 0 8px;
+  padding: 24px 20px;
+  border-radius: var(--radius);
+  background: var(--bg-sub);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.cta-box p { margin: 0; color: var(--text-body); font-size: 15px; }
+
+/* ---------- 診断について ---------- */
+.intro-start { margin-top: 8px; }
+.intro-meta { justify-content: center; }
+@media (min-width: 721px) {
+  .intro-start { max-width: 360px; }
+  .intro-meta { justify-content: flex-start; max-width: 360px; }
+}
+.intro-links {
+  margin: 40px 0 8px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 560px) { .intro-links { grid-template-columns: minmax(0, 1fr); } }
+.intro-link {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--text);
+}
+.intro-link:hover { border-color: var(--accent); color: var(--text); }
+.intro-link--main { background: var(--accent); border-color: var(--accent); color: #fff; }
+.intro-link--main:hover { background: var(--accent-dark); color: #fff; }
+.intro-link-title { font-size: 16px; font-weight: 700; }
+.intro-link-text { font-size: 13px; opacity: 0.85; }
+
+/* ---------- 職種ガイド ---------- */
+.job-index { margin: 0 0 8px; }
+.job-index .chip { display: inline-block; text-decoration: none; color: var(--text); }
+.job-index .chip:hover { color: var(--accent); }
+.job-group { scroll-margin-top: 72px; }
+.job-card {
+  scroll-margin-top: 72px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 14px;
+}
+.job-card:target { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+.article .job-card h3 { margin: 0 0 6px; font-size: 17px; }
+.article .job-summary { margin: 0 0 12px; }
+.job-meta { margin: 0; display: grid; grid-template-columns: 6.5em minmax(0, 1fr); gap: 10px 12px; font-size: 14px; }
+.job-meta dt { font-weight: 700; color: var(--text-sub); font-size: 13px; padding-top: 1px; }
+.job-meta dd { margin: 0; color: var(--text-body); }
+.article .job-meta ul { margin: 0; padding-left: 1.2em; font-size: 14px; }
+.article .job-meta li { margin-bottom: 2px; }
+.article .job-meta ul.job-types { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.job-types a {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--accent-light);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+}
+.job-types a:hover { color: var(--accent); }
+.job-type-code { font-weight: 700; color: var(--accent); letter-spacing: 0.04em; }
+@media (max-width: 480px) {
+  .job-meta { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .job-meta dd { margin-bottom: 10px; }
+}
 
 .todo {
   border: 1px dashed var(--accent);

@@ -44,4 +44,20 @@ assert.strictEqual(calcType(new Array(QUESTIONS.length).fill(0)).code, "HSDP");
 const allYes = calcType(new Array(QUESTIONS.length).fill(CHOICES[0].value));
 allYes.scores.forEach((s) => assert.ok(Math.abs(s) <= 2, "全部そう思うでスコアが片寄りすぎ"));
 
+// 6. 職種ガイドのデータがタイプと合っている
+const { JOB_CATEGORIES, JOBS } = require("../js/jobs.js");
+const catIds = new Set(JOB_CATEGORIES.map((c) => c.id));
+const jobIds = new Set();
+for (const j of JOBS) {
+  assert.ok(!jobIds.has(j.id), `職種の id「${j.id}」が重複している`);
+  jobIds.add(j.id);
+  assert.ok(/^[a-z0-9-]+$/.test(j.id), `職種の id「${j.id}」は英小文字・数字・-だけにする`);
+  assert.ok(catIds.has(j.category), `${j.name} の分類「${j.category}」がない`);
+  assert.ok(j.summary && j.tasks.length && j.companies.length, `${j.name} の内容が足りない`);
+  j.types.forEach((c) => assert.ok(TYPES[c], `${j.name} の近いタイプ「${c}」が存在しない`));
+}
+for (const code of Object.keys(TYPES)) {
+  assert.ok(JOBS.some((j) => j.types.includes(code)), `${code} に近い職種が職種ガイドに1つもない`);
+}
+
 console.log("全部 OK");

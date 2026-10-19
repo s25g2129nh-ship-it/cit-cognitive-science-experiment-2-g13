@@ -16,9 +16,12 @@
 | ファイル | 中身 |
 | --- | --- |
 | `index.html` | トップ(診断ボタンが主役) |
+| `shindan-intro.html` | 診断について(分かること・4つの軸・答え方)。メニューの「16タイプ診断」はここ |
 | `shindan.html` | 診断(20問を1問ずつ表示) |
 | `result.html` | 診断結果(`?type=TSDP&s=4,-4,0,0` を読んで表示) |
+| `types.html` | 16タイプ一覧(4つの軸の説明と全タイプ) |
 | `types/XXXX.html` | タイプ別ページ ×16(SNSでシェアされるページ) |
+| `jobs.html` | 職種ガイド(どんな仕事・主な仕事・近いタイプ・企業の例) |
 | `roadmap.html` | 就活ロードマップ |
 | `guide.html` | 理系の就活ガイド(院進・推薦・職種) |
 | `glossary.html` | 就活用語集 |
@@ -30,12 +33,13 @@
 css/style.css            共通スタイル(色は先頭の変数で管理)
 js/questions.js          質問20問、4つの軸、集計の関数 calcType
 js/types.js              16タイプのデータ(名前・説明・職種・次の一歩)
+js/jobs.js               職種ガイドのデータ(仕事内容・近いタイプ・企業の例)
 js/shindan.js            診断ページの動き
 js/result.js             結果ページの表示とシェアボタン
 js/common.js             スマホのメニュー開閉
 images/ogp/XXXX.png      シェア用画像 ×16(1200×630)
-tools/build-type-pages.js  types/ のページを作り直すスクリプト
-tools/test-shindan.js      診断ロジックのテスト
+tools/build.js           メニュー、types/ のページ、types.html の一覧、guide.html の表、jobs.html を作り直すスクリプト
+tools/test-shindan.js    診断ロジックと職種データのテスト
 ```
 
 ## よくある作業
@@ -45,12 +49,15 @@ tools/test-shindan.js      診断ロジックのテスト
 `dir` は「そう思う」で右側に加点するなら `1`、左側なら `-1`。
 1軸5問のまま、左右の向きを混ぜてください。
 
-**タイプの説明や職種を変える** → `js/types.js` を編集したあと、次を実行(Node.js が必要):
+**タイプの説明・職種ガイド・メニューを変える** → `js/types.js`、`js/jobs.js`、または `tools/build.js` の `NAV` を編集したあと、次を実行(Node.js が必要)。
+全ページのメニュー、タイプ別ページ、16タイプ一覧、理系の就活ガイドの表、職種ガイドがまとめて更新されます:
 
 ```
-node tools/build-type-pages.js
+node tools/build.js
 node tools/test-shindan.js
 ```
+
+**ページを追加する** → 既存のページをコピーして中身を書きかえ、`tools/build.js` の `NAV` にリンクを足して実行すると、全ページのメニューに出ます。
 
 テストで「全部 OK」と出れば大丈夫です。
 
@@ -62,7 +69,7 @@ node tools/test-shindan.js
 2. Source を「Deploy from a branch」、Branch を `main` / `(root)` にして Save
 3. 数分後に `https://<ユーザー名>.github.io/cit-cognitive-science-experiment-2-g13/` で見られる
 
-公開URLが上と違う場合は、`tools/build-type-pages.js` の `SITE_URL` を直して実行し直してください
+公開URLが上と違う場合は、`tools/build.js` の `SITE_URL` を直して実行し直してください
 (シェアしたときの画像はこのURLを使います)。
 
 ## まだやること
@@ -72,3 +79,4 @@ node tools/test-shindan.js
 - [ ] 16タイプの説明・職種を先輩や就職課に確認してもらう
 - [ ] 友人テスト(診断結果に納得したか、次に何をするか分かったか)
 - [ ] 参考文献を `about.html` に書く
+- [ ] `js/jobs.js` の企業の例を、就職課の求人票や先輩の就職先で確認して入れかえる
