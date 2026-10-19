@@ -21,7 +21,8 @@
 | `result.html` | 診断結果(`?type=TSDP&s=4,-4,0,0` を読んで表示) |
 | `types.html` | 16タイプ一覧(4つの軸の説明と全タイプ) |
 | `types/XXXX.html` | タイプ別ページ ×16(SNSでシェアされるページ) |
-| `jobs.html` | 職種ガイド(どんな仕事・主な仕事・近いタイプ・企業の例) |
+| `jobs.html` | 職種ガイド(職種の一覧。各カードの右に写真) |
+| `jobs/<id>.html` | 職種ごとのページ ×22(主な仕事・向いている人・近いタイプ・関係の深い学び・企業の例) |
 | `roadmap.html` | 就活ロードマップ |
 | `guide.html` | 理系の就活ガイド(院進・推薦・職種) |
 | `glossary.html` | 就活用語集 |
@@ -33,12 +34,13 @@
 css/style.css            共通スタイル(色は先頭の変数で管理)
 js/questions.js          質問20問、4つの軸、集計の関数 calcType
 js/types.js              16タイプのデータ(名前・説明・職種・次の一歩)
-js/jobs.js               職種ガイドのデータ(仕事内容・近いタイプ・企業の例)
+js/jobs.js               職種ガイドのデータ(仕事内容・向いている人・近いタイプ・企業の例)
 js/shindan.js            診断ページの動き
 js/result.js             結果ページの表示とシェアボタン
 js/common.js             スマホのメニュー開閉
 images/ogp/XXXX.png      シェア用画像 ×16(1200×630)
-tools/build.js           メニュー、types/ のページ、types.html の一覧、guide.html の表、jobs.html を作り直すスクリプト
+images/jobs/<id>.jpg     職種の写真(置くと職種ガイドと職種ページに出る。ないあいだは点線の枠)
+tools/build.js           メニュー、types/ のページ、types.html の一覧、guide.html の表、jobs.html、jobs/ のページを作り直すスクリプト
 tools/test-shindan.js    診断ロジックと職種データのテスト
 ```
 
@@ -79,4 +81,5 @@ node tools/test-shindan.js
 - [ ] 16タイプの説明・職種を先輩や就職課に確認してもらう
 - [ ] 友人テスト(診断結果に納得したか、次に何をするか分かったか)
 - [ ] 参考文献を `about.html` に書く
+- [ ] 職種の写真を `images/jobs/<id>.jpg` に入れる(横長 4:3 か 16:9、幅800px くらい。フリー素材なら利用規約を確認し、`js/jobs.js` の `photoCredit` に出典を書く)→ `node tools/build.js`
 - [ ] `js/jobs.js` の企業の例を、就職課の求人票や先輩の就職先で確認して入れかえる

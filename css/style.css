@@ -540,6 +540,71 @@ table.axis-table, table.table--fit { min-width: 0; }
   .job-meta dd { margin-bottom: 10px; }
 }
 
+/* 職種カード:左に文章、右に写真 */
+.job-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  gap: 20px;
+  align-items: start;
+}
+.article .job-card h3 a { color: var(--text); text-decoration: none; }
+.article .job-card h3 a:hover { color: var(--accent); }
+.job-more {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 14px;
+  font-size: 14px; font-weight: 700;
+  color: var(--accent); text-decoration: none;
+}
+.job-more:hover { color: var(--accent-dark); text-decoration: underline; }
+.job-card-photo { display: block; text-decoration: none; }
+@media (max-width: 560px) {
+  .job-card { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .job-card-photo { order: -1; }   /* スマホでは写真を上に */
+}
+
+/* 写真の枠(写真がないときは点線の枠を出す) */
+.job-photo { margin: 0; }
+.job-photo img {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--bg-sub);
+}
+.job-photo--empty {
+  display: flex; align-items: center; justify-content: center;
+  aspect-ratio: 4 / 3;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-sub);
+  color: var(--text-sub);
+  font-size: 12px; line-height: 1.6; text-align: center;
+  padding: 8px;
+}
+.job-photo--empty code { font-size: 11px; word-break: break-all; }
+.job-photo--hero { margin: 8px 0 8px; }
+.job-photo--hero img, .job-photo--hero.job-photo--empty { aspect-ratio: 16 / 9; }
+@media (max-width: 560px) {
+  .job-card-photo .job-photo img, .job-card-photo .job-photo--empty { aspect-ratio: 16 / 9; }
+}
+.job-photo-credit { margin-top: 4px; font-size: 11px; color: var(--text-sub); text-align: right; }
+
+/* 職種ページ */
+.job-head-cat {
+  display: inline-block; margin: 0 0 4px;
+  padding: 2px 10px; border-radius: 999px;
+  background: var(--accent-light); color: var(--accent);
+  font-size: 12px; font-weight: 700;
+}
+.article .type-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.article ul.check-list { list-style: none; padding-left: 0; }
+.article ul.check-list li { position: relative; padding-left: 1.7em; }
+.article ul.check-list li::before {
+  content: ""; position: absolute; left: 0.2em; top: 0.55em;
+  width: 0.9em; height: 0.5em;
+  border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
 .todo {
   border: 1px dashed var(--accent);
   border-radius: var(--radius);
