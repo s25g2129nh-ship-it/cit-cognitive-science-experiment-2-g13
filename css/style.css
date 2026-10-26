@@ -730,3 +730,11 @@ a.stat-card:hover { border-color: var(--accent); }
 .howto-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #fff; }
 .howto-shot:has(img) { border-style: solid; min-height: 220px; }
 @media (max-width: 480px) { .howto-shot { margin-left: 0; } }
+
+/* データの説明文で、ほかの項目との違いを強調する部分 */
+.data-hl {
+  font-size: 15px; font-weight: 700; color: var(--text);
+  background: linear-gradient(transparent 55%, var(--accent-light) 55%);
+  padding: 0 2px;
+}
+.data-item--pre .data-hl { background: linear-gradient(transparent 55%, var(--pre-light) 55%); }
