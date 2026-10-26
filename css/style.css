@@ -628,3 +628,51 @@ table.axis-table, table.table--fit { min-width: 0; }
   color: #6b4542;
   margin: 16px 0;
 }
+
+/* ---------- アンケートのデータ(先輩と2年生の比較) ---------- */
+.data-box {
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--bg-sub);
+  padding: 16px 18px;
+  margin: 8px 0 24px;
+}
+.article .data-label { margin: 0 0 10px; font-size: 13px; font-weight: 700; color: var(--accent); }
+.data-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.data-item { display: flex; flex-direction: column; gap: 2px; }
+.data-num { font-size: 26px; font-weight: 700; line-height: 1.2; color: var(--text); }
+.data-text { font-size: 12px; line-height: 1.6; color: var(--text-body); }
+.article .data-src { margin: 10px 0 0; font-size: 11px; color: var(--text-sub); }
+@media (max-width: 480px) {
+  .data-grid { grid-template-columns: minmax(0, 1fr); }
+  .data-item { flex-direction: row; align-items: baseline; gap: 10px; }
+  .data-num { font-size: 22px; min-width: 3.6em; }
+}
+
+/* 先輩の声 */
+.article ul.voices { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.article ul.voices li {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: var(--accent-light);
+  font-size: 14px;
+}
+
+/* トップの「先輩のデータ」 */
+.stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+.stat-card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
+.stat-num { display: block; font-size: 28px; font-weight: 700; color: var(--accent); line-height: 1.2; }
+.stat-text { display: block; font-size: 12px; line-height: 1.6; color: var(--text-body); margin-top: 4px; }
+@media (max-width: 560px) { .stat-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* 2年生の不安の声(トップ) */
+.worry-list { list-style: none; margin: 0 0 16px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.worry-list li {
+  padding: 8px 14px; border-radius: 999px;
+  background: var(--bg); border: 1px solid var(--line);
+  font-size: 13px; color: var(--text-body);
+}
+a.link-plain { text-decoration: none; color: inherit; }
+a.stat-card:hover { border-color: var(--accent); }

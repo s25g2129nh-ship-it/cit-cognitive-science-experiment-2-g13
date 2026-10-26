@@ -39,7 +39,17 @@ const NAV = [
     ],
   },
   { href: "jobs.html", label: "職種ガイド", group: ["jobs/"] },
-  { href: "roadmap.html", label: "ロードマップ" },
+  {
+    href: "roadmap.html", label: "就活の進め方",
+    group: ["touroku.html", "sources.html", "senkou.html", "support.html"],
+    children: [
+      { href: "roadmap.html", label: "就活ロードマップ" },
+      { href: "touroku.html", label: "進路希望登録の案内" },
+      { href: "sources.html", label: "情報源ガイド" },
+      { href: "senkou.html", label: "選考対策" },
+      { href: "support.html", label: "学内支援まとめ" },
+    ],
+  },
   { href: "guide.html", label: "理系の就活ガイド" },
   { href: "glossary.html", label: "用語集" },
   { href: "about.html", label: "このサイトについて" },
@@ -294,6 +304,8 @@ ${cards}
 replaceBetween("jobs.html", "JOB-LIST", `${jobIndex}\n${jobSections}`);
 
 // ---------- 6. 職種ごとのページ jobs/<id>.html ----------
+// 資格が必要な職種(「資格より選考対策」の一言を出さない)
+const NEEDS_LICENSE = ["teacher", "patent"];
 const jobDir = path.join(ROOT, "jobs");
 fs.mkdirSync(jobDir, { recursive: true });
 for (const j of JOBS) {
@@ -360,7 +372,7 @@ ${j.types.map((code) => `      <a class="type-card" href="../types/${code}.html"
     <ul class="chips">
 ${(j.fields || []).map((f) => `      <li class="chip chip--outline">${esc(f)}</li>`).join("\n")}
     </ul>
-    <p class="note">学科が違っても目指せる職種がほとんどです。あくまで目安にしてください。</p>
+    <p class="note">学科が違っても目指せる職種がほとんどです。あくまで目安にしてください。${NEEDS_LICENSE.includes(j.id) ? "" : '資格を気にする人も多いですが、就活を経験した先輩で「資格の情報を始める前に知りたかった」と答えたのは6%でした(<a href="../guide.html">理系の就活ガイド</a>)。'}</p>
 
     <h2>この職種がある企業の例</h2>
     <ul class="chips">
