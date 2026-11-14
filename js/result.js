@@ -41,9 +41,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 次の一歩
   const steps = document.getElementById("next-steps");
+  // js/steplinks.js で、続きが分かるページがある一歩にはリンクをつける
   type.steps.forEach((step) => {
     const li = document.createElement("li");
-    li.textContent = step;
+    const text = document.createElement("span");
+    text.textContent = step;
+    li.appendChild(text);
+    const rule = typeof stepLink === "function" ? stepLink(step) : null;
+    if (rule) {
+      const a = document.createElement("a");
+      a.className = "step-link";
+      a.href = rule.href;
+      a.textContent = rule.label;
+      li.appendChild(a);
+    }
     steps.appendChild(li);
   });
 

@@ -13,7 +13,7 @@
 <body>
   <header class="site-header">
     <div class="container">
-      <a class="logo" href="index.html">就活の地図</a>
+      <a class="logo" href="index.html">CIT就活</a>
       <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -67,6 +67,12 @@
       <div class="container">
         <h2 class="section-title">あなたの傾向</h2>
         <div class="axes" id="axes"></div>
+        <p class="note" style="margin-top: 12px">2つのキャリア理論をもとにした傾向の目安です。方向性を考えるきっかけとして使ってください(<a href="about.html">根拠について</a>)。</p>
+        <div class="jiko-box">
+          <p class="jiko-box-title">結果をもっと深めるには</p>
+          <p>この結果は、20問で見た「傾向のあたり」です。自分の経験をふり返る自己分析と合わせると、ESや面接で話せる強みになります。</p>
+          <a href="senkou.html#jikobunseki">自己分析のやり方を見る</a>
+        </div>
       </div>
     </section>
 
@@ -82,6 +88,14 @@
       <div class="container">
         <h2 class="section-title">あなたの次の一歩</h2>
         <ol class="next-steps" id="next-steps"></ol>
+        <div class="campus-box">
+          <p class="campus-box-title">学内でできること</p>
+          <ul class="campus-links">
+            <li><a href="support.html#shien">学内の講座・説明会</a><span>ES・SPI・面接の講座や、学内企業説明会</span></li>
+            <li><a href="sources.html#hito">先輩と話せる場所</a><span>研究室・サークルの先輩、OB・OGとの交流</span></li>
+            <li><a href="touroku.html">進路希望登録</a><span>登録しておくと、学内の講座や説明会の案内が届く</span></li>
+          </ul>
+        </div>
         <a class="button" href="roadmap.html">ロードマップで続きを見る</a>
       </div>
     </section>
@@ -113,6 +127,7 @@
   <script src="js/questions.js"></script>
   <script src="js/types.js"></script>
   <script src="js/jobs.js"></script>
+  <script src="js/steplinks.js"></script>
   <script src="js/result.js"></script>
 </body>
 </html>

@@ -20,6 +20,7 @@ const fs = require("fs");
 const path = require("path");
 const { TYPES, pairOf } = require("../js/types.js");
 const { JOB_CATEGORIES, JOBS, JOB_LINKS } = require("../js/jobs.js");
+const { stepLink } = require("../js/steplinks.js");
 
 // GitHub Pages で公開したときの URL(最後の / を忘れずに)
 const SITE_URL = "https://s25g2129nh-ship-it.github.io/cit-cognitive-science-experiment-2-g13/";
@@ -161,7 +162,7 @@ for (const [code, t] of Object.entries(TYPES)) {
 <body>
   <header class="site-header">
     <div class="container">
-      <a class="logo" href="../index.html">就活の地図</a>
+      <a class="logo" href="../index.html">CIT就活</a>
       <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -198,8 +199,17 @@ ${related.map((j) => `          <li><a class="link-card" href="../jobs/${j.id}.h
       <div class="container">
         <h2 class="section-title">このタイプの次の一歩</h2>
         <ol class="next-steps">
-${t.steps.map((s) => `          <li>${esc(s)}</li>`).join("\n")}
+${t.steps.map((s) => { const r = stepLink(s); return `          <li><span>${esc(s)}</span>${r ? `<a class="step-link" href="../${r.href}">${esc(r.label)}</a>` : ""}</li>`; }).join("\n")}
         </ol>
+        <div class="campus-box">
+          <p class="campus-box-title">学内でできること</p>
+          <ul class="campus-links">
+            <li><a href="../support.html#shien">学内の講座・説明会</a><span>ES・SPI・面接の講座や、学内企業説明会</span></li>
+            <li><a href="../sources.html#hito">先輩と話せる場所</a><span>研究室・サークルの先輩、OB・OGとの交流</span></li>
+            <li><a href="../touroku.html">進路希望登録</a><span>登録しておくと、学内の講座や説明会の案内が届く</span></li>
+          </ul>
+        </div>
+
         <p class="lead">自分のタイプが分からない人は、診断してみましょう。</p>
         <a class="button" href="../shindan-intro.html">就活16タイプ診断へ(約3分)</a>
       </div>
@@ -317,7 +327,7 @@ for (const j of JOBS) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${esc(j.name)} | 職種ガイド | 就活の地図</title>
+  <title>${esc(j.name)} | 職種ガイド | CIT就活</title>
   <meta name="description" content="${esc(j.summary)}">
   <meta property="og:title" content="${esc(`${j.name} | 理系の職種ガイド`)}">
   <meta property="og:description" content="${esc(j.summary)}">
@@ -331,7 +341,7 @@ ${photo ? `  <meta property="og:image" content="${SITE_URL}${photo}">\n  <meta n
 <body>
   <header class="site-header">
     <div class="container">
-      <a class="logo" href="../index.html">就活の地図</a>
+      <a class="logo" href="../index.html">CIT就活</a>
       <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="site-nav">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
