@@ -1,5 +1,5 @@
 /*
- * 診断ページの動き
+ * タイプチェックページの動き
  * 1問ずつ表示 → 回答を記録 → 最後に calcType で集計 → 結果ページへ
  * (QUESTIONS, CHOICES, calcType は questions.js で定義)
  */

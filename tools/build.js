@@ -32,10 +32,10 @@ const ROOT = path.join(__dirname, "..");
 // group に入っているページを開いているときは、親のメニューが強調される
 const NAV = [
   {
-    href: "shindan-intro.html", label: "16タイプ診断",
+    href: "shindan-intro.html", label: "就活タイプチェック",
     group: ["shindan-intro.html", "types.html", "result.html", "types/"],
     children: [
-      { href: "shindan.html", label: "診断をはじめる" },
+      { href: "shindan.html", label: "チェックをはじめる" },
       { href: "types.html", label: "16タイプ一覧" },
     ],
   },
@@ -128,7 +128,7 @@ const NAV_RE = /<nav class="site-nav"[^>]*>[\s\S]*?<\/nav>/;
 for (const file of fs.readdirSync(ROOT).filter((f) => f.endsWith(".html"))) {
   const full = path.join(ROOT, file);
   const src = fs.readFileSync(full, "utf8");
-  if (!NAV_RE.test(src)) continue; // 診断ページなどメニューのないページ
+  if (!NAV_RE.test(src)) continue; // タイプチェックページなどメニューのないページ
   fs.writeFileSync(full, src.replace(NAV_RE, navHtml(file)));
 }
 console.log("メニュー(全ページ)");
@@ -146,10 +146,10 @@ for (const [code, t] of Object.entries(TYPES)) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${esc(`${code} ${t.name} | 就活16タイプ診断`)}</title>
+  <title>${esc(`${code} ${t.name} | CIT就活タイプチェック`)}</title>
   <meta name="description" content="${esc(t.catch)}。${esc(t.desc)}">
   <meta property="og:title" content="${esc(`${code} ${t.name}`)}">
-  <meta property="og:description" content="${esc(t.catch)}。あなたは何タイプ?20問・約3分の就活16タイプ診断">
+  <meta property="og:description" content="${esc(t.catch)}。あなたは何タイプ?20問・約3分のCIT就活タイプチェック">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${SITE_URL}types/${code}.html">
   <meta property="og:image" content="${SITE_URL}images/ogp/${code}.png">
@@ -172,7 +172,7 @@ for (const [code, t] of Object.entries(TYPES)) {
 
   <main>
     <div class="container">
-      <nav class="breadcrumb" aria-label="現在の位置"><a href="../shindan-intro.html">16タイプ診断</a> › <a href="../types.html">16タイプ一覧</a> › <span aria-current="page">${code}</span></nav>
+      <nav class="breadcrumb" aria-label="現在の位置"><a href="../shindan-intro.html">就活タイプチェック</a> › <a href="../types.html">16タイプ一覧</a> › <span aria-current="page">${code}</span></nav>
       <div class="result-card">
         <p class="result-label">就活16タイプ</p>
         <p class="result-code">${code}</p>
@@ -210,8 +210,8 @@ ${t.steps.map((s) => { const r = stepLink(s); return `          <li><span>${esc(
           </ul>
         </div>
 
-        <p class="lead">自分のタイプが分からない人は、診断してみましょう。</p>
-        <a class="button" href="../shindan-intro.html">就活16タイプ診断へ(約3分)</a>
+        <p class="lead">自分のタイプが分からない人は、チェックしてみましょう。</p>
+        <a class="button" href="../shindan-intro.html">CIT就活タイプチェックへ(約3分)</a>
       </div>
     </section>
 
@@ -369,7 +369,7 @@ ${(j.fit || []).map((t) => `      <li>${esc(t)}</li>`).join("\n")}
     </ul>
 
     <h2>近いタイプ</h2>
-    <p>就活16タイプ診断で、この職種に近いタイプです。</p>
+    <p>CIT就活タイプチェックで、この職種に近いタイプです。</p>
     <div class="type-grid">
 ${j.types.map((code) => `      <a class="type-card" href="../types/${code}.html">
         <span class="type-code">${code}</span>
@@ -396,8 +396,8 @@ ${others.map((o) => `      <li><a class="link-card" href="${o.id}.html"><div><di
     </ul>
 ` : ""}
     <div class="cta-box">
-      <p>自分に近いタイプが分からない人は、診断してみましょう。20問・約3分です。</p>
-      <a class="button" href="../shindan-intro.html">就活16タイプ診断へ</a>
+      <p>自分に近いタイプが分からない人は、チェックしてみましょう。20問・約3分です。</p>
+      <a class="button" href="../shindan-intro.html">CIT就活タイプチェックへ</a>
     </div>
     <p class="center" style="margin-top: 32px"><a href="../jobs.html">職種ガイドに戻る</a></p>
   </main>

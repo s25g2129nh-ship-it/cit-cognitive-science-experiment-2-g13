@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const code = (params.get("type") || "").toUpperCase();
   const type = TYPES[code];
 
-  // タイプが不正なら診断ページに戻す
+  // タイプが不正ならタイプチェックページに戻す
   if (!type) {
     location.replace("shindan.html");
     return;
   }
 
-  document.title = `${code} ${type.name} | 就活16タイプ診断`;
+  document.title = `${code} ${type.name} | CIT就活タイプチェック`;
   setText("result-code", code);
   setText("result-name", type.name);
   setText("result-catch", type.catch);
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // シェア(共有するのはタイプ別ページ。OGP画像つきで表示される)
   const shareUrl = new URL(`types/${code}.html`, location.href).href;
-  const shareText = `私は「${code} ${type.name}」でした!\n#就活16タイプ診断`;
+  const shareText = `私は「${code} ${type.name}」でした!\n#CIT就活タイプチェック`;
   document.getElementById("share-x").href =
     `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
   document.getElementById("share-line").href =
