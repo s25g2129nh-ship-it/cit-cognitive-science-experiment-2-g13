@@ -174,6 +174,7 @@ for (const [code, t] of Object.entries(TYPES)) {
     <div class="container">
       <nav class="breadcrumb" aria-label="現在の位置"><a href="../shindan-intro.html">就活タイプチェック</a> › <a href="../types.html">16タイプ一覧</a> › <span aria-current="page">${code}</span></nav>
       <div class="result-card">
+        <img class="result-chara" src="../images/chara/${code}.svg" alt="${esc(t.name)}のキャラクター" width="160" height="160">
         <p class="result-label">就活16タイプ</p>
         <p class="result-code">${code}</p>
         <h1 class="result-name">${esc(t.name)}</h1>
@@ -249,6 +250,7 @@ replaceBetween("types.html", "TYPE-LIST", GROUPS.map((g) => {
   const cards = codesOf(g.prefix).map((code) => {
     const t = TYPES[code];
     return `          <a class="type-card" href="types/${code}.html">
+            <img class="type-chara" src="images/chara/${code}.svg" alt="" width="96" height="96" loading="lazy">
             <span class="type-code">${code}</span>
             <span class="type-name">${esc(t.name)}</span>
             <span class="type-catch">${esc(t.catch)}</span>
@@ -372,6 +374,7 @@ ${(j.fit || []).map((t) => `      <li>${esc(t)}</li>`).join("\n")}
     <p>CIT就活タイプチェックで、この職種に近いタイプです。</p>
     <div class="type-grid">
 ${j.types.map((code) => `      <a class="type-card" href="../types/${code}.html">
+        <img class="type-chara" src="../images/chara/${code}.svg" alt="" width="96" height="96" loading="lazy">
         <span class="type-code">${code}</span>
         <span class="type-name">${esc(TYPES[code].name)}</span>
         <span class="type-catch">${esc(TYPES[code].catch)}</span>

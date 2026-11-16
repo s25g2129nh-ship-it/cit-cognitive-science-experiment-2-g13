@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="HSDPのキャラクター">
+<circle cx="120" cy="124" r="112" fill="#f8ecdc"/><ellipse cx="68" cy="160" rx="10" ry="15" fill="#d08c45" transform="rotate(20 68 160)"/><ellipse cx="120" cy="214" rx="52" ry="7" fill="#000" opacity=".08"/>
+<path d="M70 150 C70 98 92 76 120 76 C148 76 170 98 170 150 C170 192 152 208 120 208 C88 208 70 192 70 150 Z" fill="#d08c45"/>
+<ellipse cx="120" cy="170" rx="30" ry="24" fill="#fff" opacity=".18"/><circle cx="104" cy="128" r="5.5" fill="#3a302c"/><circle cx="136" cy="128" r="5.5" fill="#3a302c"/>
+<circle cx="106" cy="126" r="1.6" fill="#fff"/><circle cx="138" cy="126" r="1.6" fill="#fff"/>
+<ellipse cx="94" cy="140" rx="7" ry="4" fill="#f4a3a0" opacity=".7"/><ellipse cx="146" cy="140" rx="7" ry="4" fill="#f4a3a0" opacity=".7"/>
+<path d="M113 140 Q120 147 127 140" stroke="#3a302c" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="172" cy="150" rx="10" ry="15" fill="#d08c45" transform="rotate(-35 172 150)"/><path d="M188 118 l26 10 v18 q0 26 -26 38 q-26 -12 -26 -38 v-18 z" fill="#4a78b5" stroke="#3a302c" stroke-width="3" stroke-linejoin="round"/><rect x="178" y="146" width="20" height="16" rx="3" fill="#f2c14e" stroke="#3a302c" stroke-width="2.5"/><path d="M182 146 v-5 a6 6 0 0 1 12 0 v5" fill="none" stroke="#3a302c" stroke-width="2.5"/></svg>

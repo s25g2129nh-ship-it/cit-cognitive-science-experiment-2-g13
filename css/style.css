@@ -800,3 +800,8 @@ a.stat-card:hover { border-color: var(--accent); }
 }
 
 .page-head .intro-catch { font-size: 22px; font-weight: 700; color: var(--accent); margin: -4px 0 12px; }
+
+/* ---------- タイプのキャラクター ---------- */
+.result-chara { display: block; width: 160px; height: 160px; margin: 0 auto 4px; }
+.type-card .type-chara { display: block; width: 96px; height: 96px; margin: 0 auto 6px; }
+.type-card { text-align: center; }

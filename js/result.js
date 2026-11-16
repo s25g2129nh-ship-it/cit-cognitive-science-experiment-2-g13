@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.title = `${code} ${type.name} | CIT就活タイプチェック`;
   setText("result-code", code);
+  const chara = document.getElementById("result-chara");
+  if (chara) { chara.src = `images/chara/${code}.svg`; chara.alt = `${type.name}のキャラクター`; chara.hidden = false; }
   setText("result-name", type.name);
   setText("result-catch", type.catch);
   setText("result-desc", type.desc);
