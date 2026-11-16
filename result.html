@@ -59,7 +59,9 @@
       <div class="share">
         <a class="button button--dark" id="share-x" href="#" target="_blank" rel="noopener">Xでシェア</a>
         <a class="button button--dark" id="share-line" href="#" target="_blank" rel="noopener">LINEで送る</a>
+        <button class="button button--dark" id="share-copy" type="button">リンクをコピー</button>
       </div>
+      <p class="note share-status" id="share-status" role="status"></p>
 
       <p class="result-desc" id="result-desc"></p>
     </div>
@@ -68,7 +70,23 @@
       <div class="container">
         <h2 class="section-title">あなたの傾向</h2>
         <div class="axes" id="axes"></div>
-        <p class="note" style="margin-top: 12px">2つのキャリア理論をもとにした傾向の目安です。方向性を考えるきっかけとして使ってください(<a href="about.html">根拠について</a>)。</p>
+        <p class="axes-note" id="axes-neutral" hidden></p>
+        <div class="near-box" id="near-box" hidden>
+          <p class="near-box-title">こちらのタイプも近いかもしれません</p>
+          <p id="near-text"></p>
+          <a class="pair-card" id="near" href="#">
+            <span class="type-code" id="near-code"></span>
+            <span>
+              <span class="type-name" id="near-name" style="display: block"></span>
+              <span class="type-catch" id="near-catch"></span>
+            </span>
+          </a>
+        </div>
+        <div class="history-box" id="history-box" hidden>
+          <p class="history-box-title">前回の結果とくらべる</p>
+          <p id="history-text"></p>
+        </div>
+        <p class="note" style="margin-top: 12px">2つのキャリア理論(ホランドの職業興味理論・シャインのキャリア・アンカー)をもとにした傾向の目安です。方向性を考えるきっかけとして使ってください(<a href="about.html#check">タイプチェックの根拠と出し方</a>)。</p>
         <div class="jiko-box">
           <p class="jiko-box-title">結果をもっと深めるには</p>
           <p>この結果は、20問で見た「傾向のあたり」です。自分の経験をふり返る自己分析と合わせると、ESや面接で話せる強みになります。</p>
@@ -112,7 +130,7 @@
           </span>
         </a>
         <p class="center" style="margin-top: 32px">
-          <a href="types.html">16タイプ一覧を見る</a> ・ <a href="shindan.html">もう一度チェックする</a>
+          <a href="types.html">16タイプ一覧を見る</a> ・ <a href="shindan.html?new=1">もう一度チェックする</a>
         </p>
       </div>
     </section>

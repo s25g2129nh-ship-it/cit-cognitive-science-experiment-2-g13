@@ -805,3 +805,54 @@ a.stat-card:hover { border-color: var(--accent); }
 .result-chara { display: block; width: 160px; height: 160px; margin: 0 auto 4px; }
 .type-card .type-chara { display: block; width: 96px; height: 96px; margin: 0 auto 6px; }
 .type-card { text-align: center; }
+
+/* ===== 利用後アンケートをうけた改善(2026/11) ===== */
+/* 見出しへのジャンプで、固定ヘッダーの下に隠れないように */
+html { scroll-padding-top: 72px; }
+/* 読みやすさ:本文の行間を少し広く */
+.article p, .article li { line-height: 1.9; }
+
+/* タイプチェック:ヒントと「結果を見る」 */
+.quiz-hint { font-size: 15px; color: var(--text-sub); margin: -20px 0 16px; }
+.quiz-finish { margin-top: 24px; padding: 16px 18px; border: 1px solid var(--accent); border-radius: var(--radius); background: var(--bg-sub); text-align: center; }
+.quiz-finish p { margin: 0 0 12px; font-size: 15px; }
+.quiz-finish .button { width: 100%; max-width: 360px; min-height: 52px; font-size: 18px; }
+
+/* 結果:どちらにも近い・近いタイプ・前回とくらべる・コピー */
+.axis-near { font-size: 14px; font-weight: 700; color: var(--accent); background: var(--bg-sub); border: 1px solid var(--line); border-radius: 999px; padding: 0 10px; }
+.axis-row.is-near .axis-fill { opacity: 0.45; }
+.axes-note { margin: 14px 0 0; font-size: 15px; color: var(--text-body); }
+.near-box, .history-box { margin-top: 20px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-sub); }
+.near-box-title, .history-box-title { margin: 0 0 6px; font-weight: 700; font-size: 16px; }
+.near-box p, .history-box p { font-size: 15px; margin: 0 0 10px; }
+.history-box p:last-child { margin-bottom: 0; }
+.near-box .pair-card { background: var(--bg); }
+.share { flex-wrap: wrap; }
+.share .button { min-width: 0; }
+.share-status { margin: 8px 0 0; min-height: 1em; text-align: center; }
+
+/* アンケートの数字:横棒グラフ */
+.data-lead { font-weight: 700; margin: 24px 0 4px; }
+.data-q { margin: 0 0 10px; font-size: 15px; color: var(--text-body); }
+.data-bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.article .data-bars li { margin: 0; line-height: 1.6; }
+.data-bar { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "who text text" "meter meter num"; column-gap: 10px; row-gap: 4px; align-items: center; }
+.data-bar .data-who { grid-area: who; font-size: 14px; font-weight: 700; color: #fff; border-radius: 4px; padding: 0 8px; line-height: 1.7; }
+.data-bar--pre .data-who { background: #6b7a8c; }
+.data-bar--post .data-who { background: var(--accent); }
+.data-bar .data-text { grid-area: text; font-size: 15px; }
+.data-meter { grid-area: meter; height: 12px; border-radius: 999px; background: var(--track); overflow: hidden; }
+.data-meter > span { display: block; height: 100%; border-radius: 999px; }
+.data-bar--pre .data-meter > span { background: #6b7a8c; }
+.data-bar--post .data-meter > span { background: var(--accent); }
+.data-bar .data-num { grid-area: num; font-size: 20px; min-width: 3.2em; text-align: right; }
+
+/* タイプ一覧:グループごとの色(キャラクターの色とそろえる) */
+.type-group--ts { --g: #5b7fa6; }
+.type-group--tv { --g: #3f9a8c; }
+.type-group--hs { --g: #d08c45; }
+.type-group--hv { --g: #c4625a; }
+.type-group .type-group-head { border-left: 6px solid var(--g, var(--accent)); padding-left: 10px; }
+.type-group .type-card { border-top: 4px solid var(--g, var(--line)); }
+.share { display: grid; grid-template-columns: 1fr 1fr; }
+.share #share-copy { grid-column: 1 / -1; background: var(--bg); color: var(--text); border: 1px solid var(--text); }

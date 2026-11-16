@@ -84,7 +84,7 @@ function jobPhoto(j) {
 // prefix: リンクの前につける "../" など、size: "card" か "hero"
 function photoHtml(j, prefix, size) {
   const src = jobPhoto(j);
-  const credit = j.photoCredit ? `<figcaption class="job-photo-credit">出典:${esc(j.photoCredit)}</figcaption>` : "";
+  const credit = j.photoCredit ? `<figcaption class="job-photo-credit">出典：${esc(j.photoCredit)}</figcaption>` : "";
   if (src) {
     return `<figure class="job-photo job-photo--${size}"><img src="${prefix}${src}" alt="${esc(j.name)}の仕事のようす" loading="lazy" width="800" height="600">${credit}</figure>`;
   }
@@ -257,7 +257,7 @@ replaceBetween("types.html", "TYPE-LIST", GROUPS.map((g) => {
             <span class="type-jobs">${esc(t.jobs.join("、"))}</span>
           </a>`;
   }).join("\n");
-  return `    <section class="type-group">
+  return `    <section class="type-group type-group--${g.prefix.toLowerCase()}">
       <div class="type-group-head">
         <h2>${esc(g.name)}</h2>
         <span class="type-group-code">${g.prefix}○○</span>
